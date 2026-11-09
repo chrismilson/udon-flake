@@ -73,5 +73,16 @@
     flake = "github:chrismilson/udon-flake";
   };
 
+  # Store hygiene so generations/closures can't fill the disk again (niku hit
+  # ENOSPC in *both* places: /boot and GC-starved store growth). The 30-day
+  # window keeps rollback depth; the systemd-boot configurationLimit above
+  # bounds boot entries at each rebuild.
+  nix.gc = {
+    automatic = true;
+    dates = "03:30"; # daily, safely away from other timers
+    options = "--delete-older-than 30d";
+    randomizedDelaySec = "45min";
+  };
+
   system.stateVersion = "25.05";
 }
