@@ -39,6 +39,9 @@
     openssh.authorizedKeys.keys = [
       # irasshai onramp (managed as a k8s secret on the home cluster)
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkYMnqftlc7Z5xs7SJAl0pEBI7Z4JgNiZXe6dG0gGt/ irasshai"
+      # personal laptop/home key (break-glass; also currently present in the
+      # hosts' manual authorized_keys)
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6Rn44BKcRRPRo784yeXvs8NBEOprsF88npfPWC64qd"
     ];
     packages = with pkgs; [
       tree

@@ -1,7 +1,7 @@
-# The point at which the pskFile secret is consumed (kamatama for now).
-{ config, ... }:
+# Server node module (kamatama).
 
 {
+  networking.wireless.enable = true; # Ethernet is primary; WiFi is backup.
   networking.wireless.networks."ayay2022oct".pskFile =
     config.sops.secrets."wpa-psk-file".path;
 
