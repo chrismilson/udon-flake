@@ -11,6 +11,11 @@
 {
   time.timeZone = "Asia/Tokyo";
 
+  # Both remote hosts boot via systemd-boot/EFI (matching the local configs
+  # they replace).
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   # DHCP on the wired interface; see host files for specifics.
   networking.useDHCP = lib.mkDefault true;
 
