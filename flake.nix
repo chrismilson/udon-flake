@@ -21,14 +21,14 @@
           system = "x86_64-linux";
           modules = [
             sops-nix.nixosModules.sops
-            ./hosts/kamatama
+            ./hosts/kamatama/configuration.nix
           ];
         };
         niku = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             sops-nix.nixosModules.sops
-            ./hosts/niku
+            ./hosts/niku/configuration.nix
           ];
         };
       };
