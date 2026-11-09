@@ -3,9 +3,9 @@
 
 {
   networking.wireless.enable = true; # Ethernet is primary; WiFi is backup.
-  networking.wireless.environmentFile =
-    config.sops.secrets."wpa-psk-env".path;
-  networking.wireless.networks."ayay2022oct".psk = "@PSK@";
+  networking.wireless.secretsFile =
+    config.sops.secrets."wpa-secrets-file".path;
+  networking.wireless.networks."ayay2022oct".pskRaw = "ext:wifi-psk";
 
   services.tailscale.extraSetFlags = [ "--advertise-routes=192.168.68.0/24" ];
 

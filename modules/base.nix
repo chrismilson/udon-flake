@@ -59,11 +59,9 @@
   # need their existing SSH host key.
   sops.defaultSopsFile = ../secrets/japan.yaml;
   sops.secrets."k3s-token" = { };
-  # WiFi backup link. "wpa-psk-env" is a PSK=<key> line consumed by the
-  # wpa_supplicant environmentFile mechanism (psk "@"-substitution); "wifi-psk"
-  # keeps the raw key for reference/other uses.
-  sops.secrets."wpa-psk-env" = { };
-  sops.secrets."wifi-psk" = { };
+  # WiFi backup link: "wpa-secrets-file" holds a wpa_supplicant secrets-file
+  # line "wifi-psk=<key>", referenced via pskRaw = "ext:wifi-psk".
+  sops.secrets."wpa-secrets-file" = { };
 
   # Flake-based updates replace the previous channel-based autoUpgrade.
   system.autoUpgrade = {
