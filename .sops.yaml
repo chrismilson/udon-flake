@@ -1,0 +1,14 @@
+# sops config: secrets/ files are encrypted to the age keys derived from each
+# host's /etc/ssh/ssh_host_ed25519_key (see README bootstrap below).
+keys:
+  - &kamatama age1tf3scpatp56e2nvnwqhlcf9433v6u88qkkh864t8cvzkh2nuhamsn3gcxd
+  - &niku age1txtjpqsw05smq428z6jeqrrftcj5a4f920sjm9kt6nkf0d82z5xqve2vff
+creation_rules:
+  - path_regex: secrets/.*\.ya?ml$
+    age: >-
+      age1tf3scpatp56e2nvnwqhlcf9433v6u88qkkh864t8cvzkh2nuhamsn3gcxd,
+      age1txtjpqsw05smq428z6jeqrrftcj5a4f920sjm9kt6nkf0d82z5xqve2vff
+  - path_regex: \.age$
+    age: >-
+      age1tf3scpatp56e2nvnwqhlcf9433v6u88qkkh864t8cvzkh2nuhamsn3gcxd,
+      age1txtjpqsw05smq428z6jeqrrftcj5a4f920sjm9kt6nkf0d82z5xqve2vff
