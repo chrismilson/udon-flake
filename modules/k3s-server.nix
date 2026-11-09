@@ -3,7 +3,7 @@
 
 {
   networking.wireless.networks."ayay2022oct".pskFile =
-    config.sops.templates."wpa-psk-file".path;
+    config.sops.secrets."wpa-psk-file".path;
 
   services.tailscale.extraSetFlags = [ "--advertise-routes=192.168.68.0/24" ];
 

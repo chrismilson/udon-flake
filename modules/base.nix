@@ -56,10 +56,11 @@
   # need their existing SSH host key.
   sops.defaultSopsFile = ../../secrets/japan.yaml;
   sops.secrets."k3s-token" = { };
-  # WiFi backup link (see hosts that use it). Rendered as an ssid=psk line,
-  # which is the format networking.wireless.networks.*.pskFile expects.
+  # WiFi backup link: value is a complete "ssid=psk" line (the format
+  # networking.wireless.networks.*.pskFile expects). Hosts that don't have a
+  # wireless uplink simply don't reference it.
+  sops.secrets."wpa-psk-file" = { };
   sops.secrets."wifi-psk" = { };
-  sops.templates."wpa-psk-file".content = "ayay2022oct=${config.sops.secrets."wifi-psk".path}";
 
   # Flake-based updates replace the previous channel-based autoUpgrade.
   system.autoUpgrade = {
