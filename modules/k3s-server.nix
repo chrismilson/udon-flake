@@ -1,4 +1,5 @@
 # Server node module (kamatama).
+{ config, ... }:
 
 {
   networking.wireless.enable = true; # Ethernet is primary; WiFi is backup.
