@@ -54,6 +54,7 @@
   # Secrets come from secrets/japan.yaml (sops). The age key is derived from
   # the host's /etc/ssh/ssh_host_ed25519_key (sops-nix default), so hosts only
   # need their existing SSH host key.
+  sops.defaultSopsFile = ../../secrets/japan.yaml;
   sops.secrets."k3s-token" = { };
   # WiFi backup link (see hosts that use it). Rendered as an ssid=psk line,
   # which is the format networking.wireless.networks.*.pskFile expects.
