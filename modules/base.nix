@@ -12,9 +12,12 @@
   time.timeZone = "Asia/Tokyo";
 
   # Both remote hosts boot via systemd-boot/EFI (matching the local configs
-  # they replace).
+  # they replace). Keep a small boot-entry budget: the EFI partitions are
+  # small, and channel-following upgrades otherwise fill them with old
+  # kernel/initrd copies (niku hit ENOSPC doing exactly that).
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   # DHCP on the wired interface; see host files for specifics.
   networking.useDHCP = lib.mkDefault true;
