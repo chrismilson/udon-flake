@@ -67,9 +67,12 @@
   sops.secrets."wpa-secrets-file" = { };
 
   # Flake-based updates replace the previous channel-based autoUpgrade.
+  # allowReboot stays off for the Japan hosts until trust in the flake path
+  # is rebuilt (docs/niku-outage.md hardening item 3): an unattended reboot
+  # into a not-yet-proven generation is how niku went down.
   system.autoUpgrade = {
     enable = true;
-    allowReboot = true;
+    allowReboot = false;
     flake = "github:chrismilson/udon-flake";
   };
 
